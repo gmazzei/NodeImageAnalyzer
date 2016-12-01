@@ -11,5 +11,5 @@ npm install multer
 
 ## Ejemplo de cURL
 <pre>
-curl -F "userid=1" -F "filecomment=This is an image file" -F "image=@/home/gabriel/Escritorio/television.jpg" localhost:3000/uploadimage
+curl -F "userid=1" -F "filecomment=This is an image file" -F "image=@images/television.jpg" localhost:3000/uploadimage
 </pre>
