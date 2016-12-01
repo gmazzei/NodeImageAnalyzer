@@ -1,7 +1,8 @@
 var express = require('express');
 var multer  = require('multer');
-var app = express();
+const PORT = 3000;
 
+var app = express();
 
 //La imagen puede guardarse en memoria (un buffer temporal) o en disco. 
 //Este ejemplo es con buffer.
@@ -14,7 +15,7 @@ var upload = multer({ storage: storage });
 app.post('/uploadimage', upload.single('image'), function (req, res, next) {
 
 	var uploadedImage = req.file; //Dentro de uploadedImage.buffer.data esta la imagen en forma de byte array
-	var imageComments = req.body; //Aca se guardan userid y commentarios que se agregaron a la imagen desde el cliente
+	var imageComments = req.body; //Aca se guardan attachments utiles como 'userid' y 'filecomments' que se agregaron a la imagen desde el cliente
 
 
 	res.setHeader('Content-Type', 'application/json');
@@ -22,6 +23,6 @@ app.post('/uploadimage', upload.single('image'), function (req, res, next) {
 	res.send(JSON.stringify(responseData));
 });
 
-app.listen(3000, function () {
-  console.log('App listening on port 3000.');
+app.listen(PORT, function () {
+  console.log('App listening on port %s.', PORT);
 });
